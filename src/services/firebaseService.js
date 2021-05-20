@@ -26,4 +26,16 @@ export default class FirebaseService {
   static async deleteDocument(collection, document) {
     return db.collection(collection).doc(document).delete()
   }
+  
+  
+  static async storeUser(user) {
+    const { uid } = user
+    const userDocs = await db.collection("users").doc(uid).get();
+    if (!userDocs.exists) {
+      await db.collection("users").doc(uid).set({ name: user.displayName });
+      return { name: user.displayName, id: uid }
+    } else {
+      return { ...userDocs.data(), id: uid}
+    }
+  }
 }

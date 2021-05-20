@@ -15,8 +15,8 @@ import Filter from './Filter';
 /* カスタムフック */
 import useFirebaseStorage from '../hooks/firebase';
 
-/* ライブラリ */
-import {getKey} from "../lib/util";
+// /* ライブラリ */
+// import {getKey} from "../lib/util";
 
 function Todo() {
   const [items, addItem, updateItem, removeItems] = useFirebaseStorage();
